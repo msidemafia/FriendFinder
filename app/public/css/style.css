@@ -4,3 +4,13 @@
     margin-left: auto;
     width: 25%
 }
+
+.form-header {
+    width:30%;
+}
+
+#submitBtn {
+    width:10%;
+    height:40px;
+    /* background:yellow; */
+}
