@@ -18,11 +18,11 @@
         <form>
             <div class="form-group">
                 <label for="userName">Name (Required)</label>
-                <input type="name" class="form-control form-header" id="userName">
+                <input type="text" id="userName" class="form-control form-header">
             </div>
             <div class="form-group">
                 <label for="userPicture">Link to Photo Image (Required)</label>
-                <input type="url" class="form-control form-header" id="userPhoto">
+                <input type="text" id="userPhoto" class="form-control form-header">
             </div>
         </form>
         <hr class="my-4">
@@ -33,8 +33,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionOne">
-                    <select>
+                <fieldset>
+                    <select id="questionOne">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -50,8 +50,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionTwo">
-                    <select>
+                <fieldset>
+                    <select id="questionTwo">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -67,8 +67,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionThree">
-                    <select>
+                <fieldset>
+                    <select id="questionThree">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -84,8 +84,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionFour">
-                    <select>
+                <fieldset>
+                    <select id="questionFour">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -101,8 +101,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionFive">
-                    <select>
+                <fieldset>
+                    <select id="questionFive">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -118,8 +118,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionSix">
-                    <select>
+                <fieldset>
+                    <select id="questionSix">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -135,8 +135,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionSeven">
-                    <select>
+                <fieldset>
+                    <select id="questionSeven">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -152,8 +152,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionEight">
-                    <select>
+                <fieldset>
+                    <select id="questionEight">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -169,8 +169,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionNine">
-                    <select>
+                <fieldset>
+                    <select id="questionNine">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -186,8 +186,8 @@
             <br>
             <h4>******</h4>
             <form>
-                <fieldset id="questionTen">
-                    <select>
+                <fieldset>
+                    <select id="questionTen">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -199,36 +199,59 @@
             <br>
         </div>
         <input type="submit" value="Submit" id="submitBtn">
+    </div>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script>
+        var q1;
+        var q2;
+        var q3;
+        var q4;
+        var q5;
+        var q6;
+        var q7;
+        var q8;
+        var q9;
+        var q10;
+        var scores = [];
+        let userName = $("#userName").val().trim();
+        let userPhoto = $("#userPhoto").val().trim();
+
+        $("#submitBtn").on("click", function () {
+
+            // if (!userName && !userPhoto || !userName || !userPhoto) {
+            //     console.log(userName);
+            //     console.log(userPhoto);
+            //     alert("You must fill in all required fields");
+            // }
+            // else {
+                let q1 = parseInt($("#questionOne").val());
+                let q2 = parseInt($("#questionTwo").val());
+                let q3 = parseInt($("#questionThree").val());
+                let q4 = parseInt($("#questionFour").val());
+                let q5 = parseInt($("#questionFive").val());
+                let q6 = parseInt($("#questionSix").val());
+                let q7 = parseInt($("#questionSeven").val());
+                let q8 = parseInt($("#questionEight").val());
+                let q9 = parseInt($("#questionNine").val());
+                let q10 = parseInt($("#questionTen").val());
+
+                scores.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
+
+                let user = {
+                    name: userName,
+                    photo: userPhoto,
+                    scores: scores
+                };
+
+                $.post("/api/friends", user, function (response) {
+                    console.log(response);
+                })
+            // }
+        });
 
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script>
-            var q1;
-            var q2;
-            var q3;
-            var q4;
-            var q5;
-            var q6;
-            var q7;
-            var q8;
-            var q9;
-            var q10;
-
-            $("#submitBtn").on("click", function () {
-                let q1 = $("#questionOne").val();
-                let q2 = $("#questionTwo").val();
-                let q3 = $("#questionThree").val();
-                let q4 = $("#questionFour").val();
-                let q5 = $("#questionFive").val();
-                let q6 = $("#questionSix").val();
-                let q7 = $("#questionSeven").val();
-                let q8 = $("#questionEight").val();
-                let q9 = $("#questionNine").val();
-                let q10 = $("#questionTen").val();
-            });
-
-
-        </script>
+    </script>
 </body>
 
 </html>

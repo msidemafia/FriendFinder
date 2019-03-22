@@ -10,32 +10,30 @@ module.exports = function (app) {
   app.get("/api/friends", function (req, res) {
     res.json(friendsData);
   });
+
+
   app.post("/api/friends", function (req, res) {
 
     let user = req.body;
     let userScores = user.scores
     res.json(finalMatch);
+    let diffArray = [];
+
+    for (i = 0; i < friends.length; i++) {
+      let difference = 0;
+      let currentFriend = friends[i];
+
+      for (n = 0; n < userScores.length; n++) {
+        let value = userScores[n] - currentFriend.scores[n]
+        value = Math.abs(value);
+        difference += value;
+      }
+      diffArray.push(difference);
+    }
+
+    let match = friends.indexOf(Math.min(diffArray));
+
+    finalMatch = friends[match];
+    res.send(finalMatch);
   });
-
-
-
 };
-
-let diffArray = [];
-
-for (i = 0; i < friends.length; i++) {
-  let difference = 0;
-
-  for (n = 0; n < userScores.length; n++) {
-    let value = userScores[n] - friends[i].scores[n]
-    value = Math.abs(value);
-    difference += value;
-  }
-  diffArray.push(difference);
-}
-
-let match = friends.indexOf(Math.min(diffArray));
-
-finalMatch = friends.match;
-
-
