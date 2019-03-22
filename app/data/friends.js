@@ -3,6 +3,7 @@ var friendsData = [
         name: "Corn",
         photo: "https://www.healthline.com/hlcmsresource/images/AN_images/AN250-Corn-With-Lime-732x549-thumb.jpg",
         scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
+        
     },
     {
         name: "Dave",

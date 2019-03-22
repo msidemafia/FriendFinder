@@ -11,12 +11,10 @@ module.exports = function (app) {
     res.json(friendsData);
   });
 
-
   app.post("/api/friends", function (req, res) {
 
     let user = req.body;
     let userScores = user.scores
-    res.json(finalMatch);
     let diffArray = [];
 
     for (i = 0; i < friends.length; i++) {
@@ -30,8 +28,8 @@ module.exports = function (app) {
       }
       diffArray.push(difference);
     }
-
-    let match = friends.indexOf(Math.min(diffArray));
+console.log(diffArray);
+    let match = diffArray.indexOf(Math.min(...diffArray));
 
     finalMatch = friends[match];
     res.send(finalMatch);
