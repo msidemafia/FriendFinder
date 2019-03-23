@@ -28,7 +28,7 @@ var friendsData = [
     {
         name: "Box of Kittens",
         photo: "http://i.imgur.com/3OghKsb.gif",
-        scores: [1, 4, 2, 2, 3, 3, 2, 4, 5, 4]
+        scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     },
     {
         name: "Tom",
@@ -38,3 +38,5 @@ var friendsData = [
 ];
 
 module.exports = friendsData;
+
+// 1, 4, 2, 2, 3, 3, 2, 4, 5, 4

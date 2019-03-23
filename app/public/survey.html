@@ -199,9 +199,45 @@
             <br>
         </div>
         <input type="submit" value="Submit" id="submitBtn">
-    </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="matchName">
+                            You're perfect match
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="matchNameDiv">
+                            <!-- Match name goes here -->
+                        </div>
+                        <div id="matchPhotoDiv">
+                            <!-- Match photo goes here -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jquery (full) -->
     <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Page script -->
     <script>
         var q1;
         var q2;
@@ -224,30 +260,34 @@
                 alert("You must fill in all required fields");
             }
             else {
-            let q1 = parseInt($("#questionOne").val());
-            let q2 = parseInt($("#questionTwo").val());
-            let q3 = parseInt($("#questionThree").val());
-            let q4 = parseInt($("#questionFour").val());
-            let q5 = parseInt($("#questionFive").val());
-            let q6 = parseInt($("#questionSix").val());
-            let q7 = parseInt($("#questionSeven").val());
-            let q8 = parseInt($("#questionEight").val());
-            let q9 = parseInt($("#questionNine").val());
-            let q10 = parseInt($("#questionTen").val());
+                let q1 = parseInt($("#questionOne").val());
+                let q2 = parseInt($("#questionTwo").val());
+                let q3 = parseInt($("#questionThree").val());
+                let q4 = parseInt($("#questionFour").val());
+                let q5 = parseInt($("#questionFive").val());
+                let q6 = parseInt($("#questionSix").val());
+                let q7 = parseInt($("#questionSeven").val());
+                let q8 = parseInt($("#questionEight").val());
+                let q9 = parseInt($("#questionNine").val());
+                let q10 = parseInt($("#questionTen").val());
 
-            scores = [];
-            scores.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
+                scores = [];
+                scores.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
 
-            let user = {
-                name: userName,
-                photo: userPhoto,
-                scores: scores
-            };
+                let user = {
+                    name: userName,
+                    photo: userPhoto,
+                    scores: scores
+                };
 
-            $.post("/api/friends", user, function (response) {
-                console.log(user);
-                console.log(response);           
-            });
+                $.post("/api/friends", user, function (response) {
+                    console.log(user);
+                    console.log(response);
+                    var matchImg = $("<img>").attr("src", response.photo).addClass("match-image");
+                    $('#resultsModal').modal('show');
+                    $("#matchNameDiv").text(response.name);
+                    $("#matchPhotoDiv").empty().append(matchImg);
+                });
             }
         });
 
