@@ -8,7 +8,7 @@ var friendsData = [
     {
         name: "Dave",
         photo: "http://noobstore.com/prodimages/tshirt34-m-dave-White-art-280.gif",
-        scores: [1, 4, 3, 2, 2, 4, 1, 2, 3, 1]
+        scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     },
     {
         name: "Sam Smith",
@@ -28,7 +28,7 @@ var friendsData = [
     {
         name: "Box of Kittens",
         photo: "http://i.imgur.com/3OghKsb.gif",
-        scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        scores: [1, 4, 3, 2, 2, 4, 1, 2, 3, 1]
     },
     {
         name: "Tom",
