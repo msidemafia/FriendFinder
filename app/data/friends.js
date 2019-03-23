@@ -2,7 +2,7 @@ var friendsData = [
     {
         name: "Corn",
         photo: "https://www.healthline.com/hlcmsresource/images/AN_images/AN250-Corn-With-Lime-732x549-thumb.jpg",
-        scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
+        scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         
     },
     {
@@ -28,7 +28,7 @@ var friendsData = [
     {
         name: "Box of Kittens",
         photo: "http://i.imgur.com/3OghKsb.gif",
-        scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        scores: [1, 4, 2, 2, 3, 3, 2, 4, 5, 4]
     },
     {
         name: "Tom",
@@ -39,4 +39,3 @@ var friendsData = [
 
 module.exports = friendsData;
 
-// 1, 4, 2, 2, 3, 3, 2, 4, 5, 4
